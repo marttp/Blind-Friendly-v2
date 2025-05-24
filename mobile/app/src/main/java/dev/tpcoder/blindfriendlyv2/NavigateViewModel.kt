@@ -27,10 +27,10 @@ class NavigateViewModel(application: Application) : AndroidViewModel(application
 
     private fun checkLanguageAvailability() {
         viewModelScope.launch {
-            // This needs to be delayed slightly as TTS initialization takes time
             kotlinx.coroutines.delay(500)
             val isThaiAvailable = ttsService.isLanguageAvailable(TTSService.LANGUAGE_THAI)
-            if (!isThaiAvailable) {
+            val isJapaneseAvailable = ttsService.isLanguageAvailable(TTSService.LANGUAGE_JAPANESE)
+            if (!isThaiAvailable && !isJapaneseAvailable) {
                 exitProcess(1)
             }
         }
@@ -56,7 +56,7 @@ class NavigateViewModel(application: Application) : AndroidViewModel(application
                     else -> "Hello"
                 }
                 _uiState.update { it.copy(statusText = text) }
-                ttsService.speak(text)
+                speak(text)
 
                 // Send to watch
                 // bluetoothService.sendMessage(result)
@@ -84,10 +84,9 @@ class NavigateViewModel(application: Application) : AndroidViewModel(application
                 TTSService.LANGUAGE_THAI -> "เปลี่ยนเป็นภาษาไทย"
                 else -> "Change to English"
             }
-            ttsService.speak(languageChangedText)
+            speak(languageChangedText)
         }
     }
-
 
     fun getCurrentLanguage(): String {
         return ttsService.getCurrentLanguage()
