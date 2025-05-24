@@ -3,6 +3,7 @@ package dev.tpcoder.blindfriendlyv2.service
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.util.Log
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
 import androidx.camera.core.ImageCaptureException
@@ -59,6 +60,7 @@ class CameraService(private val context: Context) {
                 }
 
                 override fun onError(exception: ImageCaptureException) {
+                    Log.e("CameraService", "Error capturing image: ${exception.message}")
                     continuation.resumeWithException(exception)
                 }
             }
