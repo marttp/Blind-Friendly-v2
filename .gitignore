@@ -11,4 +11,4 @@ local.properties
 .idea/
 .kotlin/
 
-gemma-3n-E4B-it-int4.task
+**.task
