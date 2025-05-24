@@ -71,9 +71,6 @@ dependencies {
     // Bluetooth
     implementation(libs.androidx.bluetooth)
 
-    // OkHttp for model download
-    implementation(libs.okhttp)
-
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
