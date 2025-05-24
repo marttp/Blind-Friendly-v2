@@ -54,7 +54,7 @@ class NavigateViewModel(application: Application) : AndroidViewModel(application
     fun performScan() {
         viewModelScope.launch {
             try {
-                _uiState.update { it.copy(statusText = "Scanning...") }
+                _uiState.update { it.copy(statusText = "Checking...") }
                 // Capture image
                 val bitmap = cameraService.captureImage()
                 val currentLanguage = _uiState.value.currentLanguage
@@ -68,7 +68,7 @@ class NavigateViewModel(application: Application) : AndroidViewModel(application
 
             } catch (e: Exception) {
                 e.printStackTrace()
-                _uiState.update { it.copy(statusText = "Error scanning") }
+                _uiState.update { it.copy(statusText = "Error checking") }
             }
         }
     }
@@ -90,6 +90,7 @@ class NavigateViewModel(application: Application) : AndroidViewModel(application
                 TTSService.LANGUAGE_THAI -> "เปลี่ยนเป็นภาษาไทย"
                 else -> "Change to English"
             }
+            _uiState.update { it.copy(statusText = languageChangedText) }
             speak(languageChangedText)
         }
     }
@@ -111,6 +112,7 @@ class NavigateViewModel(application: Application) : AndroidViewModel(application
         // Shutdown TTS when ViewModel is cleared
         ttsService.shutdown()
         aiService.shutdown()
+        cameraService.shutdown()
     }
 }
 
