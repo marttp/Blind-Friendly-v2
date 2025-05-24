@@ -23,7 +23,7 @@ class AIService(private val context: Context) {
         .build()
 
     // Path to manually pushed model
-    private val modelPath = "/data/local/tmp/llm/gemma-3n-E4B.task"
+    private val modelPath = "/data/local/tmp/llm/gemma-3n-E2B.task"
     
     // Flag to track initialization status
     private var isInitialized = false
