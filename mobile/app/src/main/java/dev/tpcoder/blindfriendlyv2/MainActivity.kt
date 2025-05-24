@@ -8,10 +8,15 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
+import dev.tpcoder.blindfriendlyv2.screens.LoadingScreen
+import dev.tpcoder.blindfriendlyv2.screens.NavigateScreen
+import dev.tpcoder.blindfriendlyv2.screens.NavigateViewModel
 import dev.tpcoder.blindfriendlyv2.ui.theme.BlindFriendlyV2Theme
 
 class MainActivity : ComponentActivity() {
@@ -31,7 +36,19 @@ class MainActivity : ComponentActivity() {
         setContent {
             BlindFriendlyV2Theme {
                 Surface(modifier = Modifier.fillMaxSize()) {
-                    NavigateScreen(viewModel)
+                    // Collect the model state to determine which screen to show
+                    val modelState by viewModel.modelState.collectAsState()
+                    
+                    if (modelState.isLoading || !modelState.isInitialized) {
+                        // Show loading screen while model is initializing
+                        LoadingScreen(
+                            message = if (modelState.isLoading) "Initializing AI Model..." else "Waiting for model initialization...",
+                            error = modelState.error
+                        )
+                    } else {
+                        // Show main navigation screen once model is initialized
+                        NavigateScreen(viewModel)
+                    }
                 }
             }
         }
