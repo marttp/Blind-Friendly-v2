@@ -55,22 +55,24 @@ dependencies {
     implementation(libs.androidx.camera.camera2)
 
     // ViewModel
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
 
     // Navigation
-    implementation("androidx.navigation:navigation-compose:2.7.6")
+    implementation(libs.androidx.navigation.compose)
 
     // DataStore
-    implementation("androidx.datastore:datastore-preferences:1.0.0")
+    implementation(libs.androidx.datastore.preferences)
 
     // MediaPipe
-    implementation("com.google.mediapipe:tasks-genai:0.10.14")
+    implementation(libs.mediapipe.tasks.text)
+    implementation(libs.mediapipe.tasks.genai)
+    implementation(libs.mediapipe.tasks.imagegen)
 
     // Bluetooth
-    implementation("androidx.bluetooth:bluetooth:1.0.0-alpha02")
+    implementation(libs.androidx.bluetooth)
 
     // OkHttp for model download
-    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation(libs.okhttp)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
