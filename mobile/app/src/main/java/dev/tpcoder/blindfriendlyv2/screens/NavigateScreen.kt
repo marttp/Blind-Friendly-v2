@@ -1,4 +1,4 @@
-package dev.tpcoder.blindfriendlyv2
+package dev.tpcoder.blindfriendlyv2.screens
 
 import androidx.camera.view.PreviewView
 import androidx.compose.foundation.background
