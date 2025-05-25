@@ -72,6 +72,7 @@ class NavigateViewModel(application: Application) : AndroidViewModel(application
             } catch (e: Exception) {
                 e.printStackTrace()
                 _uiState.update { it.copy(statusText = "Error checking") }
+                sendToWatch("Error checking", 2)
             }
         }
     }
@@ -105,22 +106,23 @@ class NavigateViewModel(application: Application) : AndroidViewModel(application
     fun speak(text: String, priority: Boolean = false) {
         ttsService.speak(text, priority)
     }
-    
-    fun retryModelInitialization() {
-        initializeModel()
+
+    private fun sendToWatch(message: String, explicitPattern: Int? = null) {
+        explicitPattern?.let {
+            bluetoothService.sendToWatch(it, message)
+            return
+        }
+        val pattern = determineHapticPattern(message)
+        bluetoothService.sendToWatch(pattern, message)
     }
 
-    fun sendToWatch(message: String) {
-//        val pattern = when {
-//            result.contains("clear", ignoreCase = true) -> 1
-//            result.contains("careful", ignoreCase = true) ||
-//                    result.contains("caution", ignoreCase = true) -> 2
-//            result.contains("stop", ignoreCase = true) ||
-//                    result.contains("danger", ignoreCase = true) -> 3
-//            else -> 2
-//        }
-        // Send to watch
-        bluetoothService.sendToWatch(1, "clear")
+    private fun determineHapticPattern(message: String): Int {
+        return when {
+            message.contains("Clear", ignoreCase = true) -> 1
+            message.contains("Danger", ignoreCase = true) -> 3
+            else -> 2
+        }
+
     }
 
     @RequiresPermission(Manifest.permission.BLUETOOTH_CONNECT)

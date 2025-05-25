@@ -120,6 +120,7 @@ class AIService(private val context: Context) {
             - 前方0-10メートルのみ
             - 物体の名前と距離を含める
             - 歩行に関連する情報のみ
+            - ステータスを先頭に付ける: Clear/Obstacle/Danger
             
             例: 「縁石が1メートル先」「自転車が3メートル先」「前方の経路はクリア」「左折可能」
         """.trimIndent()
@@ -130,6 +131,7 @@ class AIService(private val context: Context) {
             - เฉพาะระยะ 0-10 เมตรข้างหน้า
             - ระบุชื่อของวัตถุและระยะทาง
             - เฉพาะข้อมูลที่เกี่ยวกับการเดิน
+            - นำหน้าด้วยสถานะ: Clear/Obstacle/Danger
             
             ตัวอย่าง: "ขอบทาง 1 เมตรข้างหน้า" "รถจักรยาน 3 เมตรข้างหน้า" "เส้นทางโล่ง" "เลี้ยวซ้ายได้"
         """.trimIndent()
@@ -140,6 +142,7 @@ class AIService(private val context: Context) {
             - Only 0-10 meters ahead
             - Include the object's name and distance
             - Only walking-related info
+            - Prefix with state: Clear/Obstacle/Danger
             
             Examples: "Curb 1 meter ahead" "Bicycle 3 meters ahead" "Clear path" "Left turn available"
         """.trimIndent()
