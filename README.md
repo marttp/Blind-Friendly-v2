@@ -15,6 +15,22 @@ Capability to use LLM navigate people via phone without internet connection
 - Jetpack Compose (Mobile, WearOS)
 - Gemma 3n
 
+## Prerequisites
+
+Upload your model to desired path on your mobile device. Please note that for testing purpose.
+
+Setup link: https://ai.google.dev/edge/mediapipe/solutions/genai/llm_inference/android#download-model
+
+```bash
+# Remove any previously loaded models
+adb shell rm -r /data/local/tmp/llm/
+
+adb shell mkdir -p /data/local/tmp/llm/
+
+# Upload model to mobile device. Replace <output_path> with your model path and <model_version> with your model version
+adb push <output_path> /data/local/tmp/llm/<model_version>.task
+```
+
 ## Demo
 
 ### Video
