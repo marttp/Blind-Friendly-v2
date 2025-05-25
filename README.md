@@ -35,6 +35,9 @@ adb push <output_path> /data/local/tmp/llm/<model_version>.task
 
 ### Video
 
+Youtube link: https://youtu.be/Cdiz0aIZTTA
+
+[![Blind Friendly App Demo](https://img.youtube.com/vi/Cdiz0aIZTTA/maxresdefault.jpg)](https://youtu.be/Cdiz0aIZTTA)
 
 ### Result
 
