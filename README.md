@@ -63,6 +63,7 @@ Time: ~40 seconds
 
 - Verify capability of Gemma 3n on mobile device without internet connection
 - However, I believe my Pixel 8 Pro is not powerful enough to run Gemma 3n (Multimodal)
+  - Or it's just my stupid on development. Because Gemma 3n models are designed for efficient execution on low-resource devices 😅.
 - User experience is not good enough with 30-40 seconds delay.
 - Anyway, I believe we enable to use LLM on other task without internet connection and perform as asynchronously.
   - Example 1: Text generation
