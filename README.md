@@ -74,6 +74,7 @@ Time: ~40 seconds
 Resources related to the project.
 
 - [Gemma 3n](https://deepmind.google/models/gemma/gemma-3n/)
+- [Introducing Gemma 3n](https://developers.googleblog.com/en/introducing-gemma-3n/)
 - [Gemma 3n model overview](https://ai.google.dev/gemma/docs/gemma-3n)
 - [google/gemma-3n-E2B-it-litert-preview](https://huggingface.co/google/gemma-3n-E2B-it-litert-preview)
 - [LLM Inference guide for Android](https://ai.google.dev/edge/mediapipe/solutions/genai/llm_inference/android)
